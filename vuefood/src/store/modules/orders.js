@@ -8,15 +8,15 @@ export default {
   actions: {
     async sendOrder(context, payload) {
       console.log(payload);
-      const newOrder = {
-        order: this.$store.getters["cart/products"],
-      };
-      const userId = "staffan"; //localStorage.getItem("userId");
+      //const newOrder = {
+      //order: this.$store.getters["cart/products"],
+      //};
+      const userId = localStorage.getItem("userId");
       const response = fetch(
         `https://vue-inlamningsuppgift-default-rtdb.europe-west1.firebasedatabase.app/orders/${userId}.json`,
         {
           method: "POST",
-          body: newOrder,
+          body: JSON.stringify(payload),
         }
       );
 
@@ -38,7 +38,7 @@ export default {
     },
   },
   mutations: {
-    addOrders(state, payload) {
+    addOrder(state, payload) {
       state.orders.push(payload);
     },
   },
