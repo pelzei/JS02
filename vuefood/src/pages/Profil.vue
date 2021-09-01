@@ -2,10 +2,20 @@
   <base-card>
     <section>
       <h2>Välkommen!</h2>
-      <p>Nedan återfinner du dina tidigare beställningar:</p>
+      <p>Ditt användar-id är: {{ userName }}</p>
     </section>
   </base-card>
 </template>
+
+<script>
+export default {
+  computed: {
+    userName() {
+      return this.$store.getters["userId"];
+    },
+  },
+};
+</script>
 
 <style scoped>
 section {
